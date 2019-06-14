@@ -1,7 +1,7 @@
-* {
-  background-color: #E5F4EC;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  display: flex;
-  flex-wrap: wrap
+.App {
+    background-color: #E5F4EC;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-wrap: wrap
 }
