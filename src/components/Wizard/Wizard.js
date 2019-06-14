@@ -1,38 +1,12 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import axios from 'axios';
+import {Route, Link} from 'react-router-dom';
+import Step1 from '../Steps/Step1';
+import Step2 from '../Steps/Step2';
+import Step3 from '../Steps/Step3';
+
+
 
 export default class Wizard extends Component {
-	constructor() {
-		super();
-		this.state = {
-			name: "",
-			address: "",
-			city: "",
-			state: "",
-			zip: 0
-		}
-	}
-	
-	handleChange = e => {
-		let {value, name} = e.target;
-		this.setState({
-			[name]: value
-		})
-	}
-	handleAdd = () => {
-		let {name, address, city, state, zip} = this.state;
-		axios.post('/api/house', {name, address, city, state, zip}).then(res => {
-			this.setState({
-				name,
-				address,
-				city,
-				state,
-				zip
-			})
-		}).catch(err => console.log("posting error", err))
-	}
-
 	render() {
 		return(
 			<div>
@@ -40,34 +14,9 @@ export default class Wizard extends Component {
 				<button>
 					<Link to="/">Cancel</Link>
 				</button>
-				<p>
-					<label htmlFor="name">Name: </label>
-					<input name="name" id="name" type="text"
-						onChange={this.handleChange}/>
-				</p>
-				<p>
-					<label htmlFor="address">Street Address: </label>
-					<input name="address" id="address" type="text"
-						onChange={this.handleChange}/>
-				</p>
-				<p>
-					<label htmlFor="city">City: </label>
-					<input name="city" id="city" type="text"
-						onChange={this.handleChange}/>
-				</p>
-				<p>
-					<label htmlFor="state">State: </label>
-					<input name="state" id="state" type="text"
-						onChange={this.handleChange}/>
-				</p>
-				<p>
-					<label htmlFor="zip">Zip Code: </label>
-					<input name="zip" id="zip" type="number"
-						onChange={this.handleChange}/>
-				</p>
-				<button onClick={this.handleAdd}>
-					<Link to="/">Complete</Link>
-				</button>
+				<Route path="/wizard/step1" component={Step1}/>
+				<Route path="/wizard/step2" component={Step2}/>
+				<Route path="/wizard/step3" component={Step3}/>
 			</div>
 		)
 	}

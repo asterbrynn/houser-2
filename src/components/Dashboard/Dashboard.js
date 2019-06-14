@@ -37,7 +37,7 @@ export default class Dashboard extends Component {
 			<div>
 				<h1 style={{color: "#3B5249"}}>Dashboard</h1>
 				<button>
-					<Link to="/wizard">Add New Property</Link>
+					<Link to="/wizard/step1">Add New Property</Link>
 				</button>
 				{this.state.houses.map(house => {
 					return <House key={house.id} house={house}
